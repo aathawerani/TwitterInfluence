@@ -1,0 +1,16 @@
+Consumer Key (API Key)	LRlm8BO9pBWX4MpgiQsKKfI1D
+Consumer Secret (API Secret)	Ec5vbNH85dVADTOafOs8053SxRKRJcYjE4mvjWQEqQ5UuppFGq
+
+Access Token	3170125751-NUBnT20SRmgWBLWdg5YK4DkAFGVR2p9TYli0vxM
+Access Token Secret	ZFQLHqM0PLvp5ohjhw177Rq7IKNjc6HgdpOKOFcO7FF2R
+
+
+mysql port 3306
+user id aaht14
+password same as IBA email
+
+setup_twitter_oauth("API key", "API secret", "Access token", "Access secret")
+filterStream(file.name="yementweets", track="#YemenUnderAttack", timeout=0, tweets=1000, oauth=my_oauth, verbose=TRUE)
+yemen.df <- parseTweets("yementweets")
+con <- dbConnect(MySQL(), user='root', password='Aaht14@786', host='127.0.0.1', dbname='SMtwitterDB')
+dbWriteTable(con, value=yemen.df, name="yementweets", append=TRUE)

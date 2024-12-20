@@ -1,0 +1,5 @@
+setup_twitter_oauth("API key", "API secret", "Access token", "Access secret")
+filterStream(file.name="yementweets", track="#YemenUnderAttack", timeout=0, tweets=1000, oauth=my_oauth, verbose=TRUE)
+yemen.df <- parseTweets("yementweets")
+con <- dbConnect(MySQL(), user='root', password='Aaht14@786', host='127.0.0.1', dbname='SMtwitterDB')
+dbWriteTable(con, value=yemen.df, name="yementweets", append=TRUE)
